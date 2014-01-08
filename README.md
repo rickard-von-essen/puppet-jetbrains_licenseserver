@@ -1,6 +1,8 @@
 JetBrains License Server
 ========================
 
+[![Build Status](https://travis-ci.org/rickard-von-essen/puppet-jetbrains_licenseserver.png?branch=master)](https://travis-ci.org/rickard-von-essen/puppet-jetbrains_licenseserver)
+
 This is a puppet module to install jetbrains_licenseserver module.
 See [JetBrains License Server](http://confluence.jetbrains.com/display/LS/Home)
 
