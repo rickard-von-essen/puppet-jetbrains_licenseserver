@@ -1,0 +1,5 @@
+fixtures:
+  repositories:
+    archive: https://github.com/gini/puppet-archive.git
+  symlinks:
+    jetbrains_licenseserver: "#{source_dir}"
