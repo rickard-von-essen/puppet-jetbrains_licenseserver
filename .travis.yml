@@ -8,5 +8,4 @@ branches:
 env:
     - PUPPET_VERSION=3.2.1
     - PUPPET_VERSION=3.4.0
-notifications:
-    gemfile: .gemfile
+gemfile: .gemfile
