@@ -57,7 +57,6 @@ class jetbrains_licenseserver ( $version = '385', $tomcat_version = '7.0.52' ) {
 
   service { 'jb-licenseserver':
     ensure    => running,
-    enable    => true,
     hasstatus => false,
   }
 }

@@ -18,9 +18,8 @@ describe 'jetbrains_licenseserver', :type => :class do
 
       should contain_service( 'jb-licenseserver' ).with(
         {
-          'name'       => 'jb-licenseserver',
-          'ensure'     => 'running',
-          'enable'     => true,
+          'name'      => 'jb-licenseserver',
+          'ensure'    => 'running',
           'hasstatus' => false,
         } )
       }
