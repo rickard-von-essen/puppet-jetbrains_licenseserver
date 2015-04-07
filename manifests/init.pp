@@ -8,7 +8,7 @@
 # === Parameters
 #
 # [*version*]
-#   The version of the License Server to install. Default 332
+#   The version of the License Server to install. Default 385
 #
 # [*tomcat_version*]
 #   The version of tomcat that is bundled with the license server.
@@ -34,7 +34,7 @@
 #
 # Copyright 2014 Rickard von Essen
 #
-class jetbrains_licenseserver ( $version = '332', $tomcat_version = '6.0.36' ) {
+class jetbrains_licenseserver ( $version = '385', $tomcat_version = '7.0.52' ) {
 
   $short_arch = $::architecture ? {
     'x86_64' => 'x64',
@@ -47,22 +47,17 @@ class jetbrains_licenseserver ( $version = '332', $tomcat_version = '6.0.36' ) {
     extension  => 'zip',
     src_target => '/tmp',
     checksum   => false,
-    target     => "/opt/jetbrains-licenseServer-${version}-${short_arch}",
-  } ->
-
-  file { "/opt/jetbrains-licenseServer-${version}-${short_arch}/apache-tomcat-${tomcat_version}-${short_arch}/bin/jb-licenseserver.sh":
-    ensure => present,
-    source => 'puppet:///modules/jetbrains_licenseserver/jb-licenseserver.sh',
-    mode   => '0744',
+    target     => '/opt',
   } ->
 
   file { '/etc/init.d/jb-licenseserver':
     ensure => link,
-    target => "/opt/jetbrains-licenseServer-${version}-${short_arch}/apache-tomcat-${tomcat_version}-${short_arch}/bin/jb-licenseserver.sh",
+    target => "/opt/jetbrains-licenseServer-${version}-${short_arch}/apache-tomcat-${tomcat_version}-${short_arch}/bin/catalina.sh",
   } ->
 
   service { 'jb-licenseserver':
-    ensure => running,
-    enable => true,
+    ensure    => running,
+    enable    => true,
+    hasstatus => false,
   }
 }

@@ -8,16 +8,20 @@ describe 'jetbrains_licenseserver', :type => :class do
     end
 
     it {
-      should contain_file( '/opt/jetbrains-licenseServer-332-x64/apache-tomcat-6.0.36-x64/bin/jb-licenseserver.sh' )
+      should contain_file( '/etc/init.d/jb-licenseserver' )
       .with(
-        { 'mode' => '0744' }
+        {
+          'ensure' => 'link',
+          'target' => '/opt/jetbrains-licenseServer-385-x64/apache-tomcat-7.0.52-x64/bin/catalina.sh',
+        }
       )
 
       should contain_service( 'jb-licenseserver' ).with(
         {
-          'name'   => 'jb-licenseserver',
-          'ensure' => 'running',
-          'enable' => true,
+          'name'       => 'jb-licenseserver',
+          'ensure'     => 'running',
+          'enable'     => true,
+          'hasstatus' => false,
         } )
       }
   end
